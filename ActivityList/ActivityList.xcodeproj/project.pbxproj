@@ -52,6 +52,12 @@
 		84CAB7DD1F48057700AC2857 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7D51F48057700AC2857 /* DetailViewController.m */; };
 		84CAB7DE1F48057700AC2857 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7D71F48057700AC2857 /* ListViewController.m */; };
 		84CAB7DF1F48057700AC2857 /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7DA1F48057700AC2857 /* IssueViewController.m */; };
+		84CAB7E21F48252900AC2857 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7E11F48252900AC2857 /* CityTableViewController.m */; };
+		84CAB7E51F4825EB00AC2857 /* PurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7E41F4825EB00AC2857 /* PurchaseTableViewController.m */; };
+		84CAB7E81F48266C00AC2857 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7E71F48266C00AC2857 /* LeftViewController.m */; };
+		84CAB7EB1F4826C000AC2857 /* MyActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7EA1F4826C000AC2857 /* MyActionTableViewController.m */; };
+		84CAB7EE1F48271400AC2857 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7ED1F48271400AC2857 /* SigninViewController.m */; };
+		84CAB7F11F48274200AC2857 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAB7F01F48274200AC2857 /* SignupViewController.m */; };
 		84F5131C1F272F53002D7436 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5131B1F272F53002D7436 /* Detail.storyboard */; };
 		84F5131F1F273E1B002D7436 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5131E1F273E1B002D7436 /* ActivityTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -155,6 +161,18 @@
 		84CAB7D71F48057700AC2857 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		84CAB7D91F48057700AC2857 /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueViewController.h; sourceTree = "<group>"; };
 		84CAB7DA1F48057700AC2857 /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueViewController.m; sourceTree = "<group>"; };
+		84CAB7E01F48252900AC2857 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		84CAB7E11F48252900AC2857 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		84CAB7E31F4825EB00AC2857 /* PurchaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseTableViewController.h; sourceTree = "<group>"; };
+		84CAB7E41F4825EB00AC2857 /* PurchaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseTableViewController.m; sourceTree = "<group>"; };
+		84CAB7E61F48266C00AC2857 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		84CAB7E71F48266C00AC2857 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		84CAB7E91F4826C000AC2857 /* MyActionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActionTableViewController.h; sourceTree = "<group>"; };
+		84CAB7EA1F4826C000AC2857 /* MyActionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActionTableViewController.m; sourceTree = "<group>"; };
+		84CAB7EC1F48271400AC2857 /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
+		84CAB7ED1F48271400AC2857 /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
+		84CAB7EF1F48274200AC2857 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		84CAB7F01F48274200AC2857 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		84F5131B1F272F53002D7436 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		84F5131D1F273E1B002D7436 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		84F5131E1F273E1B002D7436 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
@@ -407,6 +425,10 @@
 				84CAB7D51F48057700AC2857 /* DetailViewController.m */,
 				84CAB7D61F48057700AC2857 /* ListViewController.h */,
 				84CAB7D71F48057700AC2857 /* ListViewController.m */,
+				84CAB7E01F48252900AC2857 /* CityTableViewController.h */,
+				84CAB7E11F48252900AC2857 /* CityTableViewController.m */,
+				84CAB7E31F4825EB00AC2857 /* PurchaseTableViewController.h */,
+				84CAB7E41F4825EB00AC2857 /* PurchaseTableViewController.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -423,6 +445,10 @@
 		84CAB7DB1F48057700AC2857 /* Member */ = {
 			isa = PBXGroup;
 			children = (
+				84CAB7E61F48266C00AC2857 /* LeftViewController.h */,
+				84CAB7E71F48266C00AC2857 /* LeftViewController.m */,
+				84CAB7E91F4826C000AC2857 /* MyActionTableViewController.h */,
+				84CAB7EA1F4826C000AC2857 /* MyActionTableViewController.m */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -430,6 +456,10 @@
 		84CAB7DC1F48057700AC2857 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				84CAB7EC1F48271400AC2857 /* SigninViewController.h */,
+				84CAB7ED1F48271400AC2857 /* SigninViewController.m */,
+				84CAB7EF1F48274200AC2857 /* SignupViewController.h */,
+				84CAB7F01F48274200AC2857 /* SignupViewController.m */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -636,12 +666,16 @@
 			files = (
 				84BBFFD01F25D8380083D37D /* ActivityList.xcdatamodeld in Sources */,
 				840355F11F2EFC8600D3248A /* BasicEncodingRules.m in Sources */,
+				84CAB7EE1F48271400AC2857 /* SigninViewController.m in Sources */,
+				84CAB7EB1F4826C000AC2857 /* MyActionTableViewController.m in Sources */,
 				84CAB7DE1F48057700AC2857 /* ListViewController.m in Sources */,
 				84CAB7DD1F48057700AC2857 /* DetailViewController.m in Sources */,
 				84BBFF9A1F25D1B50083D37D /* AppDelegate.m in Sources */,
 				84CAB7BD1F47E9CB00AC2857 /* RSADataSigner.m in Sources */,
+				84CAB7E21F48252900AC2857 /* CityTableViewController.m in Sources */,
 				84AA3CAE1F28615600677B93 /* ActivityModel.m in Sources */,
 				84CAB7BC1F47E9CB00AC2857 /* openssl_wrapper.m in Sources */,
+				84CAB7E51F4825EB00AC2857 /* PurchaseTableViewController.m in Sources */,
 				84CAB7991F47E89900AC2857 /* JSONS.m in Sources */,
 				840355E41F2EF7EB00D3248A /* ErrorHandler.m in Sources */,
 				840355EA1F2EF7EB00D3248A /* StorageMgr.m in Sources */,
@@ -649,6 +683,7 @@
 				84CAB7BE1F47E9CB00AC2857 /* RSADataVerifier.m in Sources */,
 				84CAB7B61F47E9CB00AC2857 /* GBAlipayManager.m in Sources */,
 				84CAB7B81F47E9CB00AC2857 /* DataSigner.m in Sources */,
+				84CAB7F11F48274200AC2857 /* SignupViewController.m in Sources */,
 				84CAB7B91F47E9CB00AC2857 /* DataVerifier.m in Sources */,
 				840355E31F2EF7EB00D3248A /* AppAPIClient.m in Sources */,
 				840355E61F2EF7EB00D3248A /* NSDate+Utility.m in Sources */,
@@ -657,6 +692,7 @@
 				840355E81F2EF7EB00D3248A /* NSString+Crypt.m in Sources */,
 				840355EB1F2EF7EB00D3248A /* Utilities.m in Sources */,
 				84BBFF971F25D1B50083D37D /* main.m in Sources */,
+				84CAB7E81F48266C00AC2857 /* LeftViewController.m in Sources */,
 				84CAB7BB1F47E9CB00AC2857 /* NSDataEx.m in Sources */,
 				840355E71F2EF7EB00D3248A /* NSDateFormatter+Category.m in Sources */,
 				84CAB79F1F47E91200AC2857 /* Order.m in Sources */,

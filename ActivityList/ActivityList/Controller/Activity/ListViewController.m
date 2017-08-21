@@ -23,7 +23,7 @@
 
 @property (strong,nonatomic) NSMutableArray *arr;
 - (IBAction)favoAction:(UIButton *)sender forEvent:(UIEvent *)event;
-
+- (IBAction)switchAction:(UIBarButtonItem *)sender;
 @property (strong,nonatomic) UIImageView *zoomTV;
 @property (strong,nonatomic) UIActivityIndicatorView *aiv;
 @end
@@ -473,6 +473,17 @@
         }];
 
     }
+}
+
+- (IBAction)switchAction:(UIBarButtonItem *)sender {
+    //发送注册按钮被按的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
+}
+
+- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)cityAction:(UIButton *)sender {
 }
 - (IBAction)searchAction:(UIBarButtonItem *)sender {
     //1、获得要跳转的页面的实例
