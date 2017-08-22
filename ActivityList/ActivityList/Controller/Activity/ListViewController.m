@@ -12,20 +12,26 @@
 #import "UIImageView+WebCache.h"
 #import "DetailViewController.h"
 #import "IssueViewController.h"
-@interface ListViewController ()<UITableViewDelegate,UITableViewDataSource>{
+#import <CoreLocation/CoreLocation.h>
+
+@interface ListViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>{
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
     BOOL isLoading;
+    BOOL firstVisit;
 }
+@property (weak, nonatomic) IBOutlet UIButton *cityButton;
 - (IBAction)searchAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *activityTableView;
-
-@property (strong,nonatomic) NSMutableArray *arr;
-- (IBAction)favoAction:(UIButton *)sender forEvent:(UIEvent *)event;
+//@property(strong,nonatomic) NSArray *arr;
 - (IBAction)switchAction:(UIBarButtonItem *)sender;
+- (IBAction)favoAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (strong,nonatomic) UIImageView *zoomTV;
 @property (strong,nonatomic) UIActivityIndicatorView *aiv;
+@property (strong,nonatomic) NSMutableArray *arr;
+@property (strong,nonatomic) CLLocationManager *locMgr;
+@property (strong,nonatomic) CLLocation *location;
 @end
 
 @implementation ListViewController
@@ -41,17 +47,18 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self naviConfig];
     [self uiLayout];
+    [self locaionConfig];
     [self dataInitialize];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
    
     // [self networkRequest];
 //    //过2秒执行networkRequest方法
 //    [self performSelector:@selector(networkRequest) withObject:nil afterDelay:2 ];
-    
-    
   }
 //每次将要来到这个页面的时候
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self locationStart];
 }
 //每次到达了这个页面的时候
 -(void)viewDidAppear:(BOOL)animated{
@@ -60,6 +67,7 @@
 //每次将要离开这个页面的时候
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [_locMgr stopUpdatingLocation];
 }
 //每次离开了这个页面的时候
 -( void)viewDidDisappear:(BOOL)animated{
@@ -81,6 +89,31 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//这个专门处理跟定位有关系的基本设置
+- (void)locaionConfig{
+    _locMgr = [CLLocationManager new];
+    //签协议
+    _locMgr.delegate = self;
+    //识别定位到的设备位移多少距离进行一次是别
+    _locMgr.distanceFilter = kCLDistanceFilterNone;
+    //设置把地球分割成边长多少精度的方块
+    _locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+}
+//这个方法处理开始定位
+- (void)locationStart{
+    //判断用户有没有选择过是否使用定位
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        //询问用户是否愿意使用定位
+#ifdef __IPHONE_8_0
+        //if ([_locMgr respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            //使用“使用中打开定位”这个策略去运行定位功能
+            [_locMgr requestWhenInUseAuthorization];
+        //}
+#endif
+    }
+    //打开定位服务的开关（开始定位）----只要开了就要关
+    [_locMgr startUpdatingLocation];
 }
 //这个方法专门做导航条的控制
 - (void)naviConfig{
@@ -140,6 +173,26 @@
 
 //这个方法专门做数据的处理
 - (void)dataInitialize{
+    BOOL appInit = NO;
+    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
+        //说明是第一次打开app
+        appInit = YES;
+    } else {
+        if ([Utilities getUserDefaults:@"UserCity"] == nil) {
+            //说明是第一次打开app
+            appInit = YES;
+        }
+        if (appInit) {
+            //第一次来到app将默认城市与记忆城市同步
+            NSString *userCity = _cityButton.titleLabel.text;
+            [Utilities setUserDefaults:@"UserCity" content:userCity];
+        } else {
+            //不是第一次来到app则将记忆城市与按钮上的城市名反向同步
+            NSString *userCity = [Utilities getUserDefaults:@"UserCity"];
+            [_cityButton setTitle:userCity forState:UIControlStateNormal];
+        }
+    }
+    firstVisit = YES;
     isLoading = NO;
     _arr = [NSMutableArray new];
     // 创建菊花膜
@@ -179,7 +232,7 @@
         //设置接口地址
         NSString *request = @"/event/list";
         //设置接口入参
-        NSDictionary *parameter = @{@"page":@(page),@"perPage":@(perPage)};
+        NSDictionary *parameter = @{@"page":@(page),@"perPage":@(perPage),@"city" : _cityButton.titleLabel.text};
         //开始请求
         [RequestAPI requestURL:request withParameters:parameter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情在此处执行
@@ -258,7 +311,7 @@
     //将http请求的字符串转换为NSURL
     NSURL *URL =[NSURL URLWithString:activity.imgUrl];
     //依靠SDWebImage来异步地下载一张远程路径下的图片并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
-    [cell.activityImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"image1"]];
+    [cell.activityImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"image"]];
     //将URL给NSDate（下载）
     //NSData *data = [NSData dataWithContentsOfURL:URL];
     //cell.activityImageView.image = [UIImage imageWithData:data];
@@ -341,7 +394,7 @@
         _zoomTV.userInteractionEnabled = YES;
         _zoomTV.backgroundColor = [UIColor blackColor];
         //_zoomTV.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:activity.imgUrl]]];
-        [_zoomTV sd_setImageWithURL:[NSURL URLWithString:activity.imgUrl]placeholderImage:[UIImage imageNamed:@"image1"]];
+        [_zoomTV sd_setImageWithURL:[NSURL URLWithString:activity.imgUrl]placeholderImage:[UIImage imageNamed:@"image"]];
 
         //设置图片的内容模式
         _zoomTV.contentMode = UIViewContentModeScaleAspectFit;
@@ -443,6 +496,15 @@
 
 }
 
+
+
+- (IBAction)switchAction:(UIBarButtonItem *)sender {
+    
+    //注册策划通知
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"LeftSwitch" object:nil];
+    
+}
+
 - (IBAction)favoAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if (_arr !=nil && _arr.count != 0) {
         //通过按钮的下标值减去100000拿到行号，再通过行号拿到对应的数据模型
@@ -474,17 +536,6 @@
 
     }
 }
-
-- (IBAction)switchAction:(UIBarButtonItem *)sender {
-    //发送注册按钮被按的通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
-}
-
-- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-
-- (IBAction)cityAction:(UIButton *)sender {
-}
 - (IBAction)searchAction:(UIBarButtonItem *)sender {
     //1、获得要跳转的页面的实例
      IssueViewController *issueVC = [Utilities getStoryboardInstance:@"Issue" byIdentity:@"Issue"];
@@ -505,6 +556,102 @@
         DetailViewController *detailVC = segue.destinationViewController;
         //3、把数据给下一页预备好的接受容器
         detailVC.activity = activity;
+    }
+}
+//定位失败
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error;{
+    if (error) {
+        switch (error.code) {
+            case kCLErrorNetwork:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
+                break;
+                
+            case kCLErrorDenied:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"GPSDisabled", nil) andTitle:nil onView:self];
+                break;
+                
+            case kCLErrorLocationUnknown:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"LocationUnkonw", nil) andTitle:nil onView:self];
+                break;
+                
+            default:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"SystemError", nil) andTitle:nil onView:self];
+                break;
+        }
+    }
+}
+//定位成功
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    //NSLog(@"纬度：%f",newLocation.coordinate.latitude);
+    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    _location = newLocation;
+    //用flag思想判断是否可以去根据定位拿到城市
+    if (firstVisit) {
+        firstVisit = !firstVisit;
+        //根据定位拿到城市
+        [self getRegeoViaCoordinate];
+    }
+}
+
+- (void)getRegeoViaCoordinate{
+    //dispatch表示从now开始过3个SEC
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    //用dispatch设置好的策略去做这些事情
+    dispatch_after(duration, dispatch_get_main_queue(), ^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //反向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (!error) {
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                NSLog(@"locDict = %@",locDict);
+                NSString *cityStr = locDict[@"City"];
+                 cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];
+                //将定位到的城市保存到单例化全局变量
+                [[StorageMgr singletonStorageMgr] addKey:@"LocCity" andValue:cityStr];
+                if (![cityStr isEqualToString:_cityButton.titleLabel.text]) {
+                    //当定位到的城市和当前选择的城市不一样的时候去弹窗询问用户是否要切换城市
+                    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到的的城市为%@,请问您是否要切换",cityStr] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction * yesAction = [UIAlertAction actionWithTitle: @"确认"style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        //修改城市按钮标题
+                        [_cityButton setTitle:cityStr forState:UIControlStateNormal];
+                        //修改用户选择城市记忆体
+                        [Utilities removeUserDefaults:@"UserCity"];
+                        
+                        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+                        //重新执行网络请求
+                        [self networkRequest];
+                    }];
+                    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+                    [alertView addAction:yesAction];
+                    [alertView addAction:noAction];
+                    [self presentViewController:alertView animated:YES completion:nil];
+                    
+                }
+                
+            }
+        }];
+        //关闭开关
+        [_locMgr stopUpdatingLocation];
+    });
+}
+
+
+- (void)checkCityState:(NSNotification *)note{
+    NSString *cityStr = note.object;
+    if (![cityStr isEqualToString:_cityButton.titleLabel.text]) {
+        //修改城市按钮标题
+        [_cityButton setTitle:cityStr forState:UIControlStateNormal];
+        //修改用户选择城市记忆体
+        [Utilities removeUserDefaults:@"UserCity"];
+        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+        //重新执行网络请求
+        [self networkRequest];
     }
 }
 

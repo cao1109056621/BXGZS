@@ -1,18 +1,18 @@
 //
-//  MyActionTableViewController.m
+//  MyTableViewController.m
 //  ActivityList
 //
-//  Created by admin on 2017/8/19.
+//  Created by admin1 on 2017/8/19.
 //  Copyright © 2017年 self. All rights reserved.
 //
 
-#import "MyActionTableViewController.h"
+#import "MyTableViewController.h"
 
-@interface MyActionTableViewController ()
+@interface MyTableViewController ()
 
 @end
 
-@implementation MyActionTableViewController
+@implementation MyTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

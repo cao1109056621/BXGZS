@@ -1,5 +1,5 @@
 //
-//  LeftViewController.h
+//  MyTableViewController.h
 //  ActivityList
 //
 //  Created by admin1 on 2017/8/19.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeftViewController : UIViewController
+@interface MyTableViewController : UITableViewController
 
 @end

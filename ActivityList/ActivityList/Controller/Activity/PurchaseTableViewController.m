@@ -2,7 +2,7 @@
 //  PurchaseTableViewController.m
 //  ActivityList
 //
-//  Created by admin on 2017/8/19.
+//  Created by admin1 on 2017/8/19.
 //  Copyright © 2017年 self. All rights reserved.
 //
 
