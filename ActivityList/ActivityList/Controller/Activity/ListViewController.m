@@ -236,7 +236,7 @@
         //开始请求
         [RequestAPI requestURL:request withParameters:parameter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情在此处执行
-            NSLog(@"responseObject = %@", responseObject);
+            //NSLog(@"responseObject = %@", responseObject);
             [self endAnimation];
             if ([responseObject[@"resultFlag"] integerValue] == 8001){
                 //业务逻辑成功的情况下
@@ -265,7 +265,7 @@
             }
         } failure:^(NSInteger statusCode, NSError *error) {
             //失败以后要做的事情在此处执行
-            NSLog(@"statusCode = %ld",(long)statusCode);
+            //NSLog(@"statusCode = %ld",(long)statusCode);
             [self endAnimation];
             [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
         }];
@@ -608,7 +608,7 @@
             if (!error) {
                 CLPlacemark *first = placemarks.firstObject;
                 NSDictionary *locDict = first.addressDictionary;
-                NSLog(@"locDict = %@",locDict);
+                //NSLog(@"locDict = %@",locDict);
                 NSString *cityStr = locDict[@"City"];
                  cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
                 [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];

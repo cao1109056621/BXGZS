@@ -29,6 +29,7 @@
 		84BBFFD01F25D8380083D37D /* ActivityList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84BBFFCE1F25D8380083D37D /* ActivityList.xcdatamodeld */; };
 		84F5131C1F272F53002D7436 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5131B1F272F53002D7436 /* Detail.storyboard */; };
 		84F5131F1F273E1B002D7436 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5131E1F273E1B002D7436 /* ActivityTableViewCell.m */; };
+		B25810641F4D514D00F9E0DE /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B25810631F4D514C00F9E0DE /* UserModel.m */; };
 		B27CDF871F47E665001BA5DE /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = B27CDF861F47E665001BA5DE /* BasicEncodingRules.m */; };
 		B27CDF8A1F47E88D001BA5DE /* JSONS.m in Sources */ = {isa = PBXBuildFile; fileRef = B27CDF891F47E88D001BA5DE /* JSONS.m */; };
 		B27CDF901F47E8F8001BA5DE /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = B27CDF8F1F47E8F8001BA5DE /* Order.m */; };
@@ -122,6 +123,8 @@
 		84F5131B1F272F53002D7436 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		84F5131D1F273E1B002D7436 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		84F5131E1F273E1B002D7436 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
+		B25810621F4D514C00F9E0DE /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		B25810631F4D514C00F9E0DE /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		B27CDF851F47E665001BA5DE /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicEncodingRules.h; sourceTree = "<group>"; };
 		B27CDF861F47E665001BA5DE /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicEncodingRules.m; sourceTree = "<group>"; };
 		B27CDF881F47E88D001BA5DE /* JSONS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONS.h; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				84BBFFCE1F25D8380083D37D /* ActivityList.xcdatamodeld */,
+				B25810621F4D514C00F9E0DE /* UserModel.h */,
+				B25810631F4D514C00F9E0DE /* UserModel.m */,
 				B27CDF8E1F47E8F8001BA5DE /* Order.h */,
 				B27CDF8F1F47E8F8001BA5DE /* Order.m */,
 				84AA3CAC1F28615600677B93 /* ActivityModel.h */,
@@ -361,14 +366,14 @@
 				840355D21F2EF7EB00D3248A /* AppAPIClient.m */,
 				840355D31F2EF7EB00D3248A /* ErrorHandler.h */,
 				840355D41F2EF7EB00D3248A /* ErrorHandler.m */,
-				840355D51F2EF7EB00D3248A /* NSData+Base64.h */,
-				840355D61F2EF7EB00D3248A /* NSData+Base64.m */,
 				840355D71F2EF7EB00D3248A /* NSDate+Utility.h */,
 				840355D81F2EF7EB00D3248A /* NSDate+Utility.m */,
 				840355D91F2EF7EB00D3248A /* NSDateFormatter+Category.h */,
 				840355DA1F2EF7EB00D3248A /* NSDateFormatter+Category.m */,
 				840355DB1F2EF7EB00D3248A /* NSString+Crypt.h */,
 				840355DC1F2EF7EB00D3248A /* NSString+Crypt.m */,
+				840355D51F2EF7EB00D3248A /* NSData+Base64.h */,
+				840355D61F2EF7EB00D3248A /* NSData+Base64.m */,
 				840355DF1F2EF7EB00D3248A /* StorageMgr.h */,
 				840355E01F2EF7EB00D3248A /* StorageMgr.m */,
 				840355E11F2EF7EB00D3248A /* Utilities.h */,
@@ -697,6 +702,7 @@
 				B27CDFA81F47E9E7001BA5DE /* base64.m in Sources */,
 				B27CDFAB1F47E9E7001BA5DE /* MD5DataSigner.m in Sources */,
 				840355E81F2EF7EB00D3248A /* NSString+Crypt.m in Sources */,
+				B25810641F4D514D00F9E0DE /* UserModel.m in Sources */,
 				840355EB1F2EF7EB00D3248A /* Utilities.m in Sources */,
 				84BBFF971F25D1B50083D37D /* main.m in Sources */,
 				B27CDFDD1F482666001BA5DE /* LeftViewController.m in Sources */,

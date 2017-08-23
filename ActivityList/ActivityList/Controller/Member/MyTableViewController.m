@@ -16,13 +16,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self naviConfig];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (void)naviConfig{
+    //设置导航条标题文字
+    //self.navigationItem.title = @"发布活动";
+    //设置导航条的颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    //设置导航条标题的颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+    //为导航条左上角创建一个按钮
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(beckAction)];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+//用Model的方式返回上一页
+-(void)beckAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
