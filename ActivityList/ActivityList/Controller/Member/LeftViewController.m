@@ -36,7 +36,7 @@
     if ([Utilities loginCheck]) {
         //已登陆
         _loginBtn.hidden = YES;
-        _usernameLbl.hidden = YES;
+        _usernameLbl.hidden = NO;
         
         UserModel *user = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
         [_avatrImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"Avatar"]];
