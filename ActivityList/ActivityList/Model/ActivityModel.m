@@ -20,6 +20,7 @@
     self = [super init];
     if (self) {
         
+    _activityID = [Utilities nullAndNilCheck:dict[@"id"] replaceBy:@"0"];
     self.imgUrl =[dict [@"imgUrl"]isKindOfClass:[NSNull class] ] ? @"" : dict[@"imgUrl"];
     self.content = [dict[@"content"]isKindOfClass:[NSNull class]] ?@"活动" : dict[@"content"];
     self.name = [dict[@"name"]isKindOfClass:[NSNull class]] ?@"暂无内容" : dict[@"name"];
