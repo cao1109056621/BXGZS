@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -257,7 +258,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHn-aK-Akk">
                                 <rect key="frame" x="15" y="144" width="384" height="30"/>
@@ -266,7 +267,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhP-G7-ND7">
                                 <rect key="frame" x="15" y="194" width="384" height="30"/>
@@ -295,6 +296,9 @@
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="registrationBtn:forEvent:" destination="Jjq-uk-Hz4" eventType="touchUpInside" id="FlL-br-NlK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-R6-fJZ">
                                 <rect key="frame" x="289" y="294.66666666666669" width="110" height="27"/>
@@ -350,6 +354,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="X3t-hy-pp0"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="lCb-kI-CCn" id="sEO-Mr-3MC"/>
+                        <outlet property="nicknameTextField" destination="ZHn-aK-Akk" id="YXa-O9-w3b"/>
+                        <outlet property="passTextField" destination="WhP-G7-ND7" id="GUI-ZS-iuJ"/>
+                        <outlet property="surepassTextField" destination="HvI-xT-Zu7" id="2Df-Ru-M0A"/>
+                        <outlet property="verification" destination="YAf-gi-16d" id="4WU-qx-s6L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V67-Cb-ay2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
