@@ -27,7 +27,7 @@
 //@property(strong,nonatomic) NSArray *arr;
 - (IBAction)switchAction:(UIBarButtonItem *)sender;
 - (IBAction)favoAction:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (strong,nonatomic) UIImageView *zoomTV;
+//@property (strong,nonatomic) UIImageView *zoomTV;
 @property (strong,nonatomic) UIActivityIndicatorView *aiv;
 @property (strong,nonatomic) NSMutableArray *arr;
 @property (strong,nonatomic) CLLocationManager *locMgr;
@@ -49,7 +49,7 @@
     [self uiLayout];
     [self locaionConfig];
     [self dataInitialize];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
    
     // [self networkRequest];
 //    //过2秒执行networkRequest方法
@@ -316,7 +316,8 @@
     //NSData *data = [NSData dataWithContentsOfURL:URL];
     //cell.activityImageView.image = [UIImage imageWithData:data];
     //给图片添加单击手势
-    [self addTapGestureRecognizer:cell.activityImageView];
+    
+    //[self addTapGestureRecognizer:cell.activityImageView];
    
     cell.activityName.text =  activity.name;
     cell.activityInfoLable.text = activity.content;
@@ -368,6 +369,7 @@
     [cell addGestureRecognizer:longPress];
 
 }
+/*
 //添加单击手势事件
 - (void) addTapGestureRecognizer : (id)any{
     //初始化一个单击手势，设置响应的事件为tapClick:
@@ -418,6 +420,7 @@
     }
     
 }
+*/
 //长按手指响应事件
 - (void)choose: (UILongPressGestureRecognizer *)longPress{
     //判断手势的状态（长按手势有时间间隔，对应的会有开始和结束两种状态）

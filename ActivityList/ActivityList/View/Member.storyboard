@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -38,7 +37,7 @@
                                                 <constraint firstAttribute="height" constant="0.5" id="ig6-41-Swb"/>
                                             </constraints>
                                         </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Cru-XL-3xS">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_head" translatesAutoresizingMaskIntoConstraints="NO" id="Cru-XL-3xS">
                                             <rect key="frame" x="45" y="60" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="wE0-7e-itz"/>
@@ -60,7 +59,7 @@
                                                 <constraint firstAttribute="width" constant="50" id="AIF-lK-0Yr"/>
                                                 <constraint firstAttribute="height" constant="30" id="fAr-yS-bca"/>
                                             </constraints>
-                                            <state key="normal" title="登陆">
+                                            <state key="normal" title="登录">
                                                 <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -258,7 +257,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHn-aK-Akk">
                                 <rect key="frame" x="15" y="144" width="384" height="30"/>
@@ -267,7 +266,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhP-G7-ND7">
                                 <rect key="frame" x="15" y="194" width="384" height="30"/>
@@ -297,7 +296,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="registrationBtn:forEvent:" destination="Jjq-uk-Hz4" eventType="touchUpInside" id="FlL-br-NlK"/>
+                                    <action selector="registeredAction:" destination="Jjq-uk-Hz4" eventType="touchUpInside" id="nUf-rG-49j"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UE-R6-fJZ">
@@ -318,6 +317,9 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ClickontheAction:" destination="Jjq-uk-Hz4" eventType="touchUpInside" id="qCd-sp-nUm"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YAf-gi-16d">
                                 <rect key="frame" x="15" y="294" width="259" height="30"/>
@@ -355,11 +357,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="X3t-hy-pp0"/>
                     <connections>
-                        <outlet property="nameTextField" destination="lCb-kI-CCn" id="sEO-Mr-3MC"/>
-                        <outlet property="nicknameTextField" destination="ZHn-aK-Akk" id="YXa-O9-w3b"/>
-                        <outlet property="passTextField" destination="WhP-G7-ND7" id="GUI-ZS-iuJ"/>
-                        <outlet property="surepassTextField" destination="HvI-xT-Zu7" id="2Df-Ru-M0A"/>
-                        <outlet property="verification" destination="YAf-gi-16d" id="4WU-qx-s6L"/>
+                        <outlet property="ClickontheButton" destination="7UE-R6-fJZ" id="z1s-iH-4Xd"/>
+                        <outlet property="ConfirmpasswordTextField" destination="HvI-xT-Zu7" id="88J-GS-JjT"/>
+                        <outlet property="nameTextField" destination="ZHn-aK-Akk" id="zeo-3h-fIY"/>
+                        <outlet property="passwordTextField" destination="WhP-G7-ND7" id="91C-wV-CrX"/>
+                        <outlet property="phoneTextField" destination="lCb-kI-CCn" id="lS0-dF-LWw"/>
+                        <outlet property="registeredButton" destination="42z-h9-c3s" id="qdb-UP-al0"/>
+                        <outlet property="verificationTextField" destination="YAf-gi-16d" id="vX5-41-4Mj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V67-Cb-ay2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -475,6 +479,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="100" height="100"/>
+        <image name="ic_user_head" width="100" height="100"/>
     </resources>
 </document>

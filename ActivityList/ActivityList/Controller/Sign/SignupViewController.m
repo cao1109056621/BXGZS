@@ -7,15 +7,18 @@
 //
 
 #import "SignupViewController.h"
-#import "UserModel.h"
+
 @interface SignupViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passTextField;
-@property (weak, nonatomic) IBOutlet UITextField *surepassTextField;
-@property (weak, nonatomic) IBOutlet UITextField *verification;
-@property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
-- (IBAction)registrationBtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (strong,nonatomic) UIActivityIndicatorView *aiv;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *ConfirmpasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *verificationTextField;
+@property (weak, nonatomic) IBOutlet UIButton *ClickontheButton;
+- (IBAction)ClickontheAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *registeredButton;
+- (IBAction)registeredAction:(id)sender;
+
 @end
 
 @implementation SignupViewController
@@ -40,57 +43,8 @@
 }
 */
 
-- (IBAction)registrationBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    if (_nameTextField.text.length == 0) {
-        [Utilities popUpAlertViewWithMsg:@"请输入您的手机号" andTitle:nil onView:self];
-        return;
-    }
-    if (_passTextField.text.length == 0) {
-        [Utilities popUpAlertViewWithMsg:@"请输入密码" andTitle:nil onView:self];
-        return;
-    }
-    if (_nicknameTextField.text.length < 6 || _nicknameTextField.text.length > 18) {
-        [Utilities popUpAlertViewWithMsg:@"您输入的字符必须在6—18位之间" andTitle:nil onView:self];
-        return;
-    }
-    if (_surepassTextField.text.length == 0) {
-        [Utilities popUpAlertViewWithMsg:@"请在确认密码输入框输入密码" andTitle:nil onView:self];
-        return;
-    }
-    if (_verification.text.length == 0 ) {
-        [Utilities popUpAlertViewWithMsg:@"请输入有效的四位验证码" andTitle:nil onView:self];
-        return;
-    }
-    if (_surepassTextField.text != _passTextField.text ) {
-        [Utilities popUpAlertViewWithMsg:@"请输入与密码输入框相同的密码" andTitle:nil onView:self];
-        return;
-    }
-    if (_passTextField.text.length < 6 || _passTextField.text.length > 18) {
-        [Utilities popUpAlertViewWithMsg:@"您输入的密码必须在6—18位之间" andTitle:nil onView:self];
-        return;
-    }
-    //判断某个字符串中是否每个字符都是数字
-    if (_nameTextField.text.length < 11 || [_nameTextField.text rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet]invertedSet]].location != NSNotFound) {
-        [Utilities popUpAlertViewWithMsg:@"您输入不小于11位的手机号码" andTitle:nil onView:self];
-        return;
-    }
-    //无输入异常的情况
-    [self readyForEncoding];
-    
+- (IBAction)ClickontheAction:(id)sender {
 }
-- (void)readyForEncoding{
-    // 创建菊花膜
-    _aiv = [Utilities getCoverOnView:self.view];
-    //开始请求
-    [RequestAPI requestURL:@"/register" withParameters:@{@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject = %@", responseObject);
-
-    } failure:^(NSInteger statusCode, NSError *error) {
-        NSLog(@"statusCode = %ld", (long)statusCode);
-        [_aiv stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
-    }];
-    
+- (IBAction)registeredAction:(id)sender {
 }
-
 @end

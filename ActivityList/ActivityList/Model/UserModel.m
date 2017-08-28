@@ -12,7 +12,7 @@
 -(id)initWithDictionary:(NSDictionary *)dict;{
     self = [super init];
     if (self) {
-        _memberId = [Utilities nullAndNilCheck:dict[@"memberId"] replaceBy:@"0"];
+        _memberID = [Utilities nullAndNilCheck:dict[@"memberID"] replaceBy:@"0"];
         _phone = [Utilities nullAndNilCheck:dict[@"contactTel"] replaceBy:@"未设置"];
         _nickname = [Utilities nullAndNilCheck:dict[@"memberName"] replaceBy:@"未命名"];
         _age = [Utilities nullAndNilCheck:dict[@"age"] replaceBy:@"0"];

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface UserModel : NSObject
-@property (strong,nonatomic) NSString *memberId;
+@property (strong,nonatomic) NSString *memberID;
 @property (strong,nonatomic) NSString *phone;
 @property (strong,nonatomic) NSString *nickname;
 @property (strong,nonatomic) NSString *age;
